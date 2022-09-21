@@ -10,27 +10,29 @@ namespace _272ass.Models
 {
     public class User
     {
-        [Key]
-        public int Id { get; set; }
+        public int ID { get; set; }
 
         [Required(ErrorMessage = "Please enter your User Name")]
+        [StringLength(50, ErrorMessage = "First name cannot be longer than 50 characters.")]
         [Display(Name = "User Name")]
+        [Key]
         public string Username { get; set; }
 
         [Required(ErrorMessage = "Please enter your Password")]
         public string Password { get; set; }
-
-        [Display(Name = "Role")]
-        public string Role { get; set; }
-        [NotMapped]
-        public List<SelectListItem> Roles { get; } = new List<SelectListItem>
-        {
-            new SelectListItem { Value = "admin", Text = "Administrator" },
-            new SelectListItem { Value = "organiser", Text = "Event Organiser" },
-            new SelectListItem { Value = "attendee", Text = "User"  },
-        };
         public Boolean Deleted { get; set; }
+        [Display(Name = "Created on")]
+        [DisplayFormat(DataFormatString = "{HH:mm:ss, dd-MM-yyyy}", ApplyFormatInEditMode = true)]
         public DateTime CreatedDate { get; set; }
+        [Display(Name = "Last Edit on")]
+        [DisplayFormat(DataFormatString = "{HH:mm:ss, dd-MM-yyyy}", ApplyFormatInEditMode = true)]
         public DateTime LastEdit { get; set; }
+        public User()
+        {
+            Deleted = false;
+            CreatedDate = DateTime.Now;
+            LastEdit = DateTime.Now;
+        }
     }
+
 }
