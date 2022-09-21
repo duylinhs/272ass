@@ -15,7 +15,6 @@ namespace _272ass.Models
         [Required(ErrorMessage = "Please enter your User Name")]
         [StringLength(50, ErrorMessage = "First name cannot be longer than 50 characters.")]
         [Display(Name = "User Name")]
-        [Key]
         public string Username { get; set; }
 
         [Required(ErrorMessage = "Please enter your Password")]

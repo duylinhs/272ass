@@ -41,16 +41,17 @@ namespace _272ass.Models
 
         public Boolean Deleted { get; set; }
 
-        [ForeignKey("User")]
-        public int UserId { get; set; }
+        [ForeignKey("Organiser")]
+        public int OrganiserID { get; set; }
+        [Display(Name = "Creator")]
         [Required]
-        public virtual Organiser CreatedUser { get; set; }
+        public virtual Organiser Organiser { get; set; }
 
         [ForeignKey("EventType")]
         public int EventTypeID { get; set; }
 
-        [Display(Name = "Semuinar Type")]
-        public virtual EventType EveTyoe { get; set; }
+        [Display(Name = "Seminar Type")]
+        public virtual EventType EventType { get; set; }
 
         public decimal Price { get; set; }
         public virtual ICollection<Attendee> Attendees { get; set; }
