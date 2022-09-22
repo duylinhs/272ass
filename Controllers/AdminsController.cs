@@ -18,7 +18,7 @@ namespace _272ass.Controllers
         // GET: Admins
         public ActionResult Index()
         {
-            return View(db.Admins.ToList());
+            return View(db.Admins.Where(c=> c.Deleted!=true).ToList());
         }
 
         // GET: Admins/Details/5

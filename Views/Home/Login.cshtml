@@ -1,0 +1,147 @@
+﻿@model _272ass.Models.User
+
+@{
+    ViewBag.Title = "Login";
+}
+
+<h2>Login</h2>
+
+<ul class="nav nav-pills nav-justified mb-3" id="ex1" role="tablist">
+    <li class="nav-item" role="presentation">
+        <a class="nav-link active" id="tab-login" data-bs-toggle="pill"
+           data-mdb-toggle="pill" data-bs-target="#pills-login"
+           type="button"
+           href="#pills-login" role="tab"
+           aria-controls="pills-login" aria-selected="true">Login</a>
+    </li>
+    <li class="nav-item" role="presentation">
+        <a class="nav-link" id="tab-register" data-bs-toggle="pill"
+           data-mdb-toggle="pill" data-bs-target="#pills-register"
+           type="button"
+           href="#pills-register" role="tab"
+           aria-controls="pills-register" aria-selected="false">Register</a>
+    </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade show active" id="pills-login" role="tabpanel" aria-labelledby="tab-login" tabindex="0">
+        @using (Html.BeginForm(new { @class = "form-horizontal" }))
+        {
+            @Html.AntiForgeryToken()
+            <div class="form-outline form-group d-flex flex-column ">
+                @Html.LabelFor(m => m.Username, new { @class = "form-label" })
+
+                @Html.TextBoxFor(m => m.Username, new { @class = "form-control" })
+
+                @Html.ValidationMessageFor(m => m.Username)
+                <!--
+
+                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <label asp-for="Username" class="form-label"></label>
+                <input asp-for="Username" class="form-control" />
+                <span asp-validation-for="Username" class="text-danger"></span>
+                                    <label asp-for="Password" class="form-label"></label>
+                                <input type="password" asp-for="Password" class="form-control" />
+                                <span asp-validation-for="Password" class="text-danger"></span>-->
+
+            </div>
+            <div class="form-outline mb-4">
+                @Html.LabelFor(m => m.Password, new { @class = "form-label" })
+                @Html.TextBoxFor(m => m.Password, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Password)
+            </div>
+            <div class="row mb-4">
+                <div class="col-md-6 d-flex justify-content-center">
+                    <div class="form-check mb-3 mb-md-0">
+                        <input class="form-check-input" type="checkbox" value="" id="loginCheck" disabled />
+                        <label class="form-check-label" for="loginCheck"> Remember me </label>
+                    </div>
+                </div>
+                <div class="col-md-6 d-flex justify-content-center">
+                    <a href="#!">Forgot password?</a>
+                </div>
+            </div>
+            <div class="d-grid mb-4">
+                <div class="form-group">
+                    <input type="submit" value="Sign In" class="btn btn-primary w-100" />
+                </div>
+            </div>
+            <div class="text-center">
+                <p>
+                    Not a member? <a href="#pills-register" id="tab-register" data-bs-toggle="pill"
+                                     data-mdb-toggle="pill" data-bs-target="#pills-register"
+                                     type="button" role="tab">Register</a>
+                </p>
+            </div>
+        }
+    </div>
+    <div class="tab-pane fade" id="pills-register" role="tabpanel" aria-labelledby="tab-register" tabindex="0">
+        <div class="d-flex flex-column flex-lg-row align-items-start">
+            <div class="nav flex-column align-self-stretch nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                <button class="nav-link active" id="v-pills-admin-tab" data-bs-toggle="pill" data-bs-target="#v-pills-admin" type="button" role="tab" aria-controls="v-pills-admin" aria-selected="true">Admin</button>
+                <button class="nav-link" id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false">Organiser</button>
+                <button class="nav-link" id="v-pills-test-tab" data-bs-toggle="pill" data-bs-target="#v-pills-disabled" type="button" role="tab" aria-controls="v-pills-disabled" aria-selected="false">User</button>
+            </div>
+            <div class="tab-content w-100" id="v-pills-tabContent">
+                <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-admin-tab" tabindex="0">
+
+                    @using (Html.BeginForm(new { @class = "form-horizontal" }))
+                    {
+                        
+                        <div class="form-outline mb-4">
+                            @Html.LabelFor(m => m.Username, new { @class = "form-label" })
+
+                            @Html.TextBoxFor(m => m.Username, new { @class = "form-control" })
+
+                            @Html.ValidationMessageFor(m => m.Username)
+                        </div>
+                        <div class="form-outline mb-4">
+                            @Html.LabelFor(m => m.Username, new { @class = "form-label" })
+
+                            @Html.TextBoxFor(m => m.Username, new { @class = "form-control" })
+
+                            @Html.ValidationMessageFor(m => m.Username)
+                        </div>
+                        <div class="d-grid mb-4">
+                            <button type="submit" class="btn btn-primary">Register</button>
+                        </div>
+                    }
+                </div>
+                <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab" tabindex="0">
+                    @using (Html.BeginForm(new { @class = "form-horizontal" }))
+                    {
+
+                        <div class="form-outline mb-4">
+                            @Html.LabelFor(m => m.Username, new { @class = "form-label" })
+
+                            @Html.TextBoxFor(m => m.Username, new { @class = "form-control" })
+
+                            @Html.ValidationMessageFor(m => m.Username)
+                        </div>
+                        <div class="form-outline mb-4">
+                            @Html.LabelFor(m => m.Username, new { @class = "form-label" })
+
+                            @Html.TextBoxFor(m => m.Username, new { @class = "form-control" })
+
+                            @Html.ValidationMessageFor(m => m.Username)
+                        </div>
+                        <div class="d-grid mb-4">
+                            <button type="submit" class="btn btn-primary">Register</button>
+                        </div>
+                    }
+                </div>
+                <div class="tab-pane fade" id="v-pills-disabled" role="tabpanel" aria-labelledby="v-pills-disabled-tab" tabindex="0">
+                    @{ 
+                        Html.RenderAction("RegisterUser");
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+
+    </div>
+</div>

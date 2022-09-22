@@ -28,5 +28,7 @@ namespace _272ass.Data
         public System.Data.Entity.DbSet<_272ass.Models.Organiser> Organisers { get; set; }
 
         public System.Data.Entity.DbSet<_272ass.Models.Admin> Admins { get; set; }
+
+        public System.Data.Entity.DbSet<_272ass.Models.User> Users { get; set; }
     }
 }

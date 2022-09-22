@@ -13,7 +13,7 @@ namespace _272ass.Models
         public int ID { get; set; }
 
         [Required(ErrorMessage = "Please enter your User Name")]
-        [StringLength(50, ErrorMessage = "First name cannot be longer than 50 characters.")]
+        [StringLength(100, ErrorMessage = "Username can't be longer than 100 characters'")]
         [Display(Name = "User Name")]
         public string Username { get; set; }
 
