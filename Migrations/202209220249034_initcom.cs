@@ -8,34 +8,22 @@ namespace _272ass.Migrations
         public override void Up()
         {
             CreateTable(
-                "dbo.Admins",
+                "dbo.Users",
                 c => new
                     {
                         ID = c.Int(nullable: false, identity: true),
-                        Username = c.String(nullable: false, maxLength: 50),
+                        Username = c.String(nullable: false, maxLength: 100),
                         Password = c.String(nullable: false),
                         Deleted = c.Boolean(nullable: false),
                         CreatedDate = c.DateTime(nullable: false),
                         LastEdit = c.DateTime(nullable: false),
-                    })
-                .PrimaryKey(t => t.ID);
-            
-            CreateTable(
-                "dbo.Attendees",
-                c => new
-                    {
-                        ID = c.Int(nullable: false, identity: true),
-                        FirstName = c.String(nullable: false),
-                        LastName = c.String(nullable: false),
-                        Birthday = c.DateTime(nullable: false),
-                        Email = c.String(nullable: false),
+                        FirstName = c.String(),
+                        LastName = c.String(),
+                        Birthday = c.DateTime(),
+                        Email = c.String(),
                         Address = c.String(),
                         PhoneNumber = c.String(),
-                        Username = c.String(nullable: false, maxLength: 50),
-                        Password = c.String(nullable: false),
-                        Deleted = c.Boolean(nullable: false),
-                        CreatedDate = c.DateTime(nullable: false),
-                        LastEdit = c.DateTime(nullable: false),
+                        Discriminator = c.String(nullable: false, maxLength: 128),
                     })
                 .PrimaryKey(t => t.ID);
             
@@ -58,8 +46,8 @@ namespace _272ass.Migrations
                         Price = c.Decimal(nullable: false, precision: 18, scale: 2),
                     })
                 .PrimaryKey(t => t.ID)
-                .ForeignKey("dbo.EventTypes", t => t.EventTypeID, cascadeDelete: true)
-                .ForeignKey("dbo.Organisers", t => t.OrganiserID, cascadeDelete: true)
+                .ForeignKey("dbo.EventTypes", t => t.EventTypeID, cascadeDelete: false)
+                .ForeignKey("dbo.Users", t => t.OrganiserID, cascadeDelete: false)
                 .Index(t => t.OrganiserID)
                 .Index(t => t.EventTypeID);
             
@@ -73,19 +61,6 @@ namespace _272ass.Migrations
                 .PrimaryKey(t => t.ID);
             
             CreateTable(
-                "dbo.Organisers",
-                c => new
-                    {
-                        ID = c.Int(nullable: false, identity: true),
-                        Username = c.String(nullable: false, maxLength: 50),
-                        Password = c.String(nullable: false),
-                        Deleted = c.Boolean(nullable: false),
-                        CreatedDate = c.DateTime(nullable: false),
-                        LastEdit = c.DateTime(nullable: false),
-                    })
-                .PrimaryKey(t => t.ID);
-            
-            CreateTable(
                 "dbo.EventAttendees",
                 c => new
                     {
@@ -93,8 +68,8 @@ namespace _272ass.Migrations
                         Attendee_ID = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => new { t.Event_ID, t.Attendee_ID })
-                .ForeignKey("dbo.Events", t => t.Event_ID, cascadeDelete: true)
-                .ForeignKey("dbo.Attendees", t => t.Attendee_ID, cascadeDelete: true)
+                .ForeignKey("dbo.Events", t => t.Event_ID, cascadeDelete: false)
+                .ForeignKey("dbo.Users", t => t.Attendee_ID, cascadeDelete: false)
                 .Index(t => t.Event_ID)
                 .Index(t => t.Attendee_ID);
             
@@ -102,20 +77,18 @@ namespace _272ass.Migrations
         
         public override void Down()
         {
-            DropForeignKey("dbo.Events", "OrganiserID", "dbo.Organisers");
+            DropForeignKey("dbo.Events", "OrganiserID", "dbo.Users");
             DropForeignKey("dbo.Events", "EventTypeID", "dbo.EventTypes");
-            DropForeignKey("dbo.EventAttendees", "Attendee_ID", "dbo.Attendees");
+            DropForeignKey("dbo.EventAttendees", "Attendee_ID", "dbo.Users");
             DropForeignKey("dbo.EventAttendees", "Event_ID", "dbo.Events");
             DropIndex("dbo.EventAttendees", new[] { "Attendee_ID" });
             DropIndex("dbo.EventAttendees", new[] { "Event_ID" });
             DropIndex("dbo.Events", new[] { "EventTypeID" });
             DropIndex("dbo.Events", new[] { "OrganiserID" });
             DropTable("dbo.EventAttendees");
-            DropTable("dbo.Organisers");
             DropTable("dbo.EventTypes");
             DropTable("dbo.Events");
-            DropTable("dbo.Attendees");
-            DropTable("dbo.Admins");
+            DropTable("dbo.Users");
         }
     }
 }

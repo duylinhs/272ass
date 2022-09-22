@@ -13,7 +13,7 @@ namespace _272ass.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "202209211339104_initcom"; }
+            get { return "202209220249034_initcom"; }
         }
         
         string IMigrationMetadata.Source

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Linq;
 using System.Web;
 
@@ -18,7 +19,7 @@ namespace _272ass.Data
         public _272assContext() : base("name=_272assContext")
         {
         }
-
+        
         public System.Data.Entity.DbSet<_272ass.Models.Attendee> Attendees { get; set; }
 
         public System.Data.Entity.DbSet<_272ass.Models.Event> Events { get; set; }
@@ -30,5 +31,10 @@ namespace _272ass.Data
         public System.Data.Entity.DbSet<_272ass.Models.Admin> Admins { get; set; }
 
         public System.Data.Entity.DbSet<_272ass.Models.User> Users { get; set; }
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
+
+        }
     }
 }
