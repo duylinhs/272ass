@@ -34,7 +34,6 @@ namespace _272ass.Data
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
-
         }
     }
 }

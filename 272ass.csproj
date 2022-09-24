@@ -135,9 +135,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202209220249034_initcom.cs" />
-    <Compile Include="Migrations\202209220249034_initcom.Designer.cs">
-      <DependentUpon>202209220249034_initcom.cs</DependentUpon>
+    <Compile Include="Migrations\202209240727355_initcom.cs" />
+    <Compile Include="Migrations\202209240727355_initcom.Designer.cs">
+      <DependentUpon>202209240727355_initcom.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Admin.cs" />
@@ -146,6 +146,7 @@
     <Compile Include="Models\EventType.cs" />
     <Compile Include="Models\Organiser.cs" />
     <Compile Include="Models\User.cs" />
+    <Compile Include="Models\UserRoleProvider.cs" />
     <Compile Include="obj\Debug\.NETFramework,Version=v4.7.2.AssemblyAttributes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -606,6 +607,8 @@
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Views\Home\RegisterUser.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
+    <Content Include="Views\Home\RegisterAdmin.cshtml" />
+    <Content Include="Views\Home\RegisterOrganiser.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include=".vs\272ass\v16\" />
@@ -624,8 +627,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202209220249034_initcom.resx">
-      <DependentUpon>202209220249034_initcom.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202209240727355_initcom.resx">
+      <DependentUpon>202209240727355_initcom.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

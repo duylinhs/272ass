@@ -55,7 +55,6 @@ namespace _272ass.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
             return View(organiser);
         }
 

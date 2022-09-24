@@ -16,9 +16,10 @@ namespace _272ass.Controllers
         private _272assContext db = new _272assContext();
 
         // GET: Admins
+        [Authorize(Roles ="Admin")]
         public ActionResult Index()
         {
-            return View(db.Admins.Where(c=> c.Deleted!=true).ToList());
+            return View(db.Users.ToList());
         }
 
         // GET: Admins/Details/5
@@ -28,7 +29,7 @@ namespace _272ass.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Admin admin = db.Admins.Find(id);
+            Admin admin = (Admin)db.Users.Find(id);
             if (admin == null)
             {
                 return HttpNotFound();
@@ -51,7 +52,7 @@ namespace _272ass.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Admins.Add(admin);
+                db.Users.Add(admin);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -66,7 +67,7 @@ namespace _272ass.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Admin admin = db.Admins.Find(id);
+            Admin admin = (Admin)db.Users.Find(id);
             if (admin == null)
             {
                 return HttpNotFound();
@@ -97,7 +98,7 @@ namespace _272ass.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Admin admin = db.Admins.Find(id);
+            Admin admin = (Admin)db.Users.Find(id);
             if (admin == null)
             {
                 return HttpNotFound();
@@ -110,8 +111,8 @@ namespace _272ass.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Admin admin = db.Admins.Find(id);
-            db.Admins.Remove(admin);
+            Admin admin = (Admin)db.Users.Find(id);
+            db.Users.Remove(admin);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

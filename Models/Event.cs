@@ -19,23 +19,18 @@ namespace _272ass.Models
         public string Description { get; set; }
 
         [Display(Name = "Created on")]
-        [DisplayFormat(DataFormatString = "{HH:mm:ss, dd-MM-yyyy}", ApplyFormatInEditMode = true)]
         public DateTime Created { get; set; }
 
         [Display(Name = "Edited on")]
-        [DisplayFormat(DataFormatString = "{HH:mm:ss, dd-MM-yyyy}", ApplyFormatInEditMode = true)]
         public DateTime LastEdit { get; set; }
 
         [Display(Name = "Seminar Time")]
-        [DisplayFormat(DataFormatString = "{HH:mm:ss, dd-MM-yyyy}", ApplyFormatInEditMode = true)]
         public DateTime StartDate { get; set; }
 
         [Display(Name = "Registration Begins")]
-        [DisplayFormat(DataFormatString = "{HH:mm:ss, dd-MM-yyyy}", ApplyFormatInEditMode = true)]
         public DateTime RegistrationStart { get; set; }
 
         [Display(Name = "Registration Ends")]
-        [DisplayFormat(DataFormatString = "{HH:mm:ss, dd-MM-yyyy}", ApplyFormatInEditMode = true)]
         public DateTime RegistrationEnd { get; set; }
         public string Location { get; set; }
 

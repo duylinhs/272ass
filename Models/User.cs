@@ -15,16 +15,15 @@ namespace _272ass.Models
         [Required(ErrorMessage = "Please enter your User Name")]
         [StringLength(100, ErrorMessage = "Username can't be longer than 100 characters'")]
         [Display(Name = "User Name")]
+        [Index(IsUnique = true)]
         public string Username { get; set; }
 
         [Required(ErrorMessage = "Please enter your Password")]
         public string Password { get; set; }
         public Boolean Deleted { get; set; }
         [Display(Name = "Created on")]
-        [DisplayFormat(DataFormatString = "{HH:mm:ss, dd-MM-yyyy}", ApplyFormatInEditMode = true)]
         public DateTime CreatedDate { get; set; }
         [Display(Name = "Last Edit on")]
-        [DisplayFormat(DataFormatString = "{HH:mm:ss, dd-MM-yyyy}", ApplyFormatInEditMode = true)]
         public DateTime LastEdit { get; set; }
         public User()
         {
