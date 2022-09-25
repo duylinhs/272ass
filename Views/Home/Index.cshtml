@@ -1,22 +1,85 @@
-﻿@{
+﻿@model IEnumerable<_272ass.Models.Event>
+@{
+
     ViewBag.Title = "Home Page";
 }
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+<div class="jumbot0ron">
+
+
+    <h1>Welcome</h1>
+    <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            @{var a = 1; }
+            @foreach (var item in Model)
+            {
+                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="@a" aria-label="Slide @a"></button>
+                a += 1;
+            }
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active" data-bs-interval="10000">
+                <svg width="900" height="500" class="img-thumbnail rounded mx-auto d-block vh-20">
+                    <rect width="900" height="500" style="fill:rgb(211,211,211);stroke-width:3;stroke:rgb(0,0,0)" />
+                </svg>
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>Events Listing</h5>
+                    <p>Some representative placeholder content for the first slide.</p>
+                </div>
+            </div>
+            @foreach (var item in Model)
+            {
+        <div class="carousel-item">
+            <a href=@Url.Action( "Login","Home")><svg width="900" height="500" class="img-thumbnail rounded mx-auto d-block vh-20">
+                <rect width="900" height="500" style="fill:rgb(211,211,211);stroke-width:3;stroke:rgb(0,0,0)" />
+            </svg></a>
+            <div class="carousel-caption d-none d-md-block">
+                <h5>
+                    @item.EventType.Title
+                </h5>
+                <p>@item.Description</p>
+                <p>On: @item.StartDate.ToString("MM/dd/yyyy")</p>
+                <p>Location: @item.Location</p>
+                <p>Registration begins on @item.RegistrationStart.ToString("MM/dd/yyyy")</p>
+                <p>Ends on @item.RegistrationEnd.ToString("MM/dd/yyyy")</p>
+                <p>Pricing:$@item.Price</p>
+            </div>
+        </div>
+            }
+            <!--
+    <div class="carousel-item" data-bs-interval="2000">
+        <img src="..." class="d-block w-100" alt="...">
+        <div class="carousel-caption d-none d-md-block">
+            <h5>Second slide label</h5>
+            <p>Some representative placeholder content for the second slide.</p>
+        </div>
+    </div>
+    <div class="carousel-item">
+        <img src="..." class="d-block w-100" alt="...">
+        <div class="carousel-caption d-none d-md-block">
+            <h5>Third slide label</h5>
+            <p>Some representative placeholder content for the third slide.</p>
+        </div>
+    </div>
+        -->
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
 </div>
 
 <div class="row">
     <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+        <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
+        <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
     </div>
     <div class="col-md-4">
         <h2>Get more libraries</h2>

@@ -131,6 +131,7 @@
     <Compile Include="Controllers\EventsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\OrganisersController.cs" />
+    <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Data\_272assContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -138,6 +139,14 @@
     <Compile Include="Migrations\202209240727355_initcom.cs" />
     <Compile Include="Migrations\202209240727355_initcom.Designer.cs">
       <DependentUpon>202209240727355_initcom.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202209251445017_dontblowup.cs" />
+    <Compile Include="Migrations\202209251445017_dontblowup.Designer.cs">
+      <DependentUpon>202209251445017_dontblowup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202209251515489_dontblowup1.cs" />
+    <Compile Include="Migrations\202209251515489_dontblowup1.Designer.cs">
+      <DependentUpon>202209251515489_dontblowup1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Admin.cs" />
@@ -609,6 +618,14 @@
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Home\RegisterAdmin.cshtml" />
     <Content Include="Views\Home\RegisterOrganiser.cshtml" />
+    <Content Include="Views\Users\Create.cshtml" />
+    <Content Include="Views\Users\Delete.cshtml" />
+    <Content Include="Views\Users\Details.cshtml" />
+    <Content Include="Views\Users\Edit.cshtml" />
+    <Content Include="Views\Users\Index.cshtml" />
+    <Content Include="Views\Events\Summary.cshtml" />
+    <Content Include="Views\Events\Register.cshtml" />
+    <Content Include="Views\Users\Registration.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include=".vs\272ass\v16\" />
@@ -629,6 +646,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202209240727355_initcom.resx">
       <DependentUpon>202209240727355_initcom.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202209251445017_dontblowup.resx">
+      <DependentUpon>202209251445017_dontblowup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202209251515489_dontblowup1.resx">
+      <DependentUpon>202209251515489_dontblowup1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

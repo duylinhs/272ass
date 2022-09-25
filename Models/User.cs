@@ -25,11 +25,13 @@ namespace _272ass.Models
         public DateTime CreatedDate { get; set; }
         [Display(Name = "Last Edit on")]
         public DateTime LastEdit { get; set; }
+        public virtual ICollection<Event> Event { get; set; }
         public User()
         {
             Deleted = false;
             CreatedDate = DateTime.Now;
             LastEdit = DateTime.Now;
+            Event = new List<Event>();
         }
     }
 

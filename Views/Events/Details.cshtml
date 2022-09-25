@@ -108,7 +108,14 @@
 
     </dl>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+@{
+    if (User.IsInRole("Organiser"))
+    {
+        <p>
+            @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+
+        </p>
+
+    }
+}
+@Html.ActionLink("Back to List", "Index")

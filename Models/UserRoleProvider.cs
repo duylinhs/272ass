@@ -43,22 +43,24 @@ namespace _272ass.Models
         {
             using (_272assContext _conx = new _272assContext())
             {
-                Debug.WriteLine("Reached");
                 string rol = "";
                     if(_conx.Users.Any(e => e.Username == username && e is Admin && e.Deleted!=true))
-                    {
+                {
+                    Debug.WriteLine("Admin reg");
                     rol = "Admin";
                 }
                     else if (_conx.Users.Any(e => e.Username == username && e is Organiser && e.Deleted != true))
                 {
+                    Debug.WriteLine("Organiser reg");
                     rol = "Organiser";
                 }
                     else if (_conx.Users.Any(e => e.Username == username && e is Attendee && e.Deleted != true))
                 {
+                    Debug.WriteLine("Attendee reg");
                     rol = "Attendee";
                         }
                 //_conx.Users.Where(c=>c.Username == username).Where(c=>!c.Deleted).Select(e=>EF.Property<string>(e,"Discriminator")).ToString();
-                string[] l = new string[] {rol };
+                string[] l = new string[] {rol};
                 return l;
             }
         }

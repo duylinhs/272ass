@@ -2,6 +2,7 @@
 using _272ass.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Diagnostics;
 using System.Linq;
@@ -18,7 +19,9 @@ namespace _272ass.Controllers
         private _272assContext db = new _272assContext();
         public ActionResult Index()
         {
-            return View();
+            Debug.WriteLine("");
+            var events = db.Events.Include(e => e.EventType).Include(e => e.Organiser).Where(e=>e.Deleted!=true);
+            return View(events.ToList());
         }
         public ActionResult Login()
         {
@@ -48,13 +51,11 @@ namespace _272ass.Controllers
                     var outs  = BitConverter.ToString(hasBute).Replace("-", string.Empty);
                     user.Password = outs;
                 }
-                bool IsValidUSer = db.Users.All(u=>u.Username.ToLower() == user.Username.ToLower() && u.Password.ToLower() == user.Password.ToLower());
+                bool IsValidUSer = db.Users.Any(u=>u.Username.ToLower() == user.Username.ToLower() && u.Password== user.Password);
                 
-                Debug.WriteLine(user.Username+"   "+user.Password);
                 if (IsValidUSer)
                 {
                     FormsAuthentication.SetAuthCookie(user.Username, false);
-                    Debug.WriteLine("============");
                     return RedirectToAction("Index", "Home");
                 }    
             }

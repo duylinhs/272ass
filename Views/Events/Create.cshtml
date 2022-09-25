@@ -6,7 +6,6 @@
 
 <h2>Create</h2>
 
-
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
@@ -32,17 +31,15 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Created, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Created, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.HiddenFor(model => model.Created, new { value = DateTime.Now })
                 @Html.ValidationMessageFor(model => model.Created, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.LastEdit, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.LastEdit, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.HiddenFor(model => model.LastEdit, new { id= "LastEdit", value = DateTime.Now })
                 @Html.ValidationMessageFor(model => model.LastEdit, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -50,7 +47,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.StartDate, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.StartDate, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.TextBoxFor(model => model.StartDate, new { type = "datetime-local", @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.StartDate, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -58,7 +55,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.RegistrationStart, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.RegistrationStart, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.TextBoxFor(model => model.RegistrationStart, new { type = "datetime-local", @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.RegistrationStart, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -66,7 +63,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.RegistrationEnd, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.RegistrationEnd, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.TextBoxFor(model => model.RegistrationEnd, new { type = "datetime-local", @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.RegistrationEnd, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -80,19 +77,15 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Deleted, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                <div class="checkbox">
-                    @Html.EditorFor(model => model.Deleted)
-                    @Html.ValidationMessageFor(model => model.Deleted, "", new { @class = "text-danger" })
-                </div>
+                @Html.HiddenFor(model => model.Deleted, new { id = "Deleted", value = false })
+                @Html.ValidationMessageFor(model => model.Deleted, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.OrganiserID, "OrganiserID", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("OrganiserID", null, htmlAttributes: new { @class = "form-control" })
+                @Html.HiddenFor(model => model.OrganiserID, new { id = "Deleted", value = false })
                 @Html.ValidationMessageFor(model => model.OrganiserID, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -124,7 +117,3 @@
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
